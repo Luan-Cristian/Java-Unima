@@ -1,0 +1,51 @@
+package com.exemplo.animais;
+
+public abstract class Animal {
+    public abstract void fazerBarulho();
+}
+package com.exemplo.animais;
+
+public interface Pesado {
+    double obterPeso();
+}
+package com.exemplo.animais;
+
+public class Porco extends Animal implements Pesado, Colorido{
+
+    @Override
+    public void fazerBarulho() {
+        System.out.println("Oinc!");
+    }
+
+    @Override
+    public String obterCor() {
+        return "Preto";
+    }
+
+    @Override
+    public double obterPeso() {
+        return 50.0;
+    }
+
+    public boolean enlameado(){
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        String enlameadoString = enlameado() ? "sim" : "não";
+        return String.format("\n%s: %s\n%s: %.6f\n%s: %s",
+                "Cor", obterCor(),
+                "Peso", obterPeso(),
+                "Enlameado?", enlameadoString);
+    }
+}
+package com.exemplo.animais;
+
+public class Main {
+    public static void main(String[] args) {
+        Porco porco = new Porco();
+        System.out.println(porco);
+        porco.fazerBarulho();
+    }
+}
